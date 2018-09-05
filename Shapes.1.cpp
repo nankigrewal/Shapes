@@ -33,7 +33,7 @@ int main() {
 
 	//Open the input and output files
 	fin.open("Shapes.input.txt");
-	fin.open("Shapes.output.txt");
+	fout.open("Shapes.output.txt");
 
 	//Check if the file is usable/locatable
 	if (!fin.good()) throw "I/O error";
@@ -61,8 +61,8 @@ int main() {
 			perimeter = side * 4.0;
 
 			//Output the data to the console and an output file
-			cout << tokens.at(0) << " side = " << length << ", area = " << area << ", perimeter = " << perimeter << endl;
-			fout << tokens.at(0) << " side = " << length << ", area = " << area << ", perimeter = " << perimeter << endl;
+			cout << tokens.at(0) << " side = " << side << ", area = " << area << ", perimeter = " << perimeter << endl;
+			fout << tokens.at(0) << " side = " << side << ", area = " << area << ", perimeter = " << perimeter << endl;
 		}
 		else if (tokens.at(0) == "RECTANGLE") {
 			//Length and width values needed
@@ -90,8 +90,8 @@ int main() {
 			perimeter = length * 3.0;
 
 			//Output the data to the console and an output file
-			cout << tokens.at(0) << " side = " << length << ", area = " << area << ", perimeter = " << perimeter << endl;
-			fout << tokens.at(0) << " side = " << length << ", area = " << area << ", perimeter = " << perimeter << endl;
+			cout << tokens.at(0) << " side = " << side << ", area = " << area << ", perimeter = " << perimeter << endl;
+			fout << tokens.at(0) << " side = " << side << ", area = " << area << ", perimeter = " << perimeter << endl;
 		}
 		else if (tokens.at(0) == "CIRCLE") {
 			// Radius value needed
@@ -104,8 +104,8 @@ int main() {
 			perimeter = 2.0 * pi * radius;
 
 			//Output the data to the console and an output file
-			cout << tokens.at(0) << " radius = " << length << ", area = " << area << ", perimeter = " << perimeter << endl;
-			fout << tokens.at(0) << " radius = " << length << ", area = " << area << ", perimeter = " << perimeter << endl;
+			cout << tokens.at(0) << " radius = " << radius << ", area = " << area << ", perimeter = " << perimeter << endl;
+			fout << tokens.at(0) << " radius = " << radius << ", area = " << area << ", perimeter = " << perimeter << endl;
 		}
 		else if (tokens.at(0) == "CUBE") {
 			//Side value needed
@@ -156,8 +156,8 @@ int main() {
 			//Side and height values needed
 			tokens.resize(3, "0");
 			//Convert strings to doubles
-			height = atof(tokens.at(1).c_str());
 			side = atof(tokens.at(1).c_str());
+			height = atof(tokens.at(2).c_str());
 
 			//Calculate surface area and volume using geometric formulas
 			surfaceArea = (2.0 * sqrt(3) / 4.0 * side * side) + (3.0 * side * height);
