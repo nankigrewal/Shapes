@@ -1,0 +1,12 @@
+SQUARE side = 14.5, area = 210.25, perimeter = 58
+SQUARE side = 0, area = 0, perimeter = 0
+RECTANGLE length = 14.5, width = 4.65, area = 67.425, perimeter = 38.3
+CIRCLE radius = 14.5, area = 660.519, perimeter = 91.1061
+BOX length = 0, width = 2, height = 9, surface area = 36, volume = 0
+CUBE Side = 13, surface area = 1014, volume = 2197
+BOX length = 1, width = 2, height = 3, surface area = 22, volume = 6
+CYLINDER radius = 4, height = 2.3, surface area = 158.336, volume = 115.611
+CYLINDER radius = 0, height = 1.23, surface area = 0, volume = 0
+CYLINDER radius = 1.23, height = 50, surface area = 395.921, volume = 237.646
+TRIANGLE side = 1.2, area = 0.623538, perimeter = 3
+PRISM side = 2.2, height = 5, surface area = 37.1916, volume = 10.4789

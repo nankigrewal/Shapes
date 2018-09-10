@@ -19,7 +19,7 @@ int main() {
 
 	//Programmer info
 	cout << "Programmer : Nanki Grewal\nProgrammer ID: 1428278" << endl;
-	cout << "File: " << __FILE__ << endl;
+	cout << "File: " << __FILE__ << "\n\n";
 
 	//Declaring input and output file
 	ifstream fin;
@@ -42,12 +42,13 @@ int main() {
 	while (fin.good()) {
 		//Read the line
 		getline(fin, input);
-		//Check for whether the line is empty
-		if (input == "")
-			continue;
 
 		//Parse the string using the parseString function, store in vector
 		vector<string> tokens = parseString(input);
+
+		//Check for whether the line is empty
+		if (tokens.size() == 0)
+			continue;
 
 		//The following conditional tests for what type of object is specified, then it calculates and outputs desired values
 		if (tokens.at(0) == "SQUARE") {
