@@ -15,6 +15,46 @@ vector<string> parseString(string);
 
 const double pi = 3.14159;
 
+struct Square {
+	double side;
+};
+struct Rectangle {
+	double length;
+	double width;
+};
+struct Circle {
+	double radius;
+};
+struct Triangle {
+	double side;
+};
+struct Cube {
+	double side;
+};
+struct Box {
+	double length;
+	double width;
+	double height;
+};
+struct Cylinder {
+	double radius;
+	double height;
+};
+struct Prism {
+	double side;
+	double length;
+};
+
+void outputSquare(ostream&, const Square&);
+void outputRectangle(ostream&, const Rectangle&);
+void outputCircle(ostream&, const Circle&);
+void outputTriangle(ostream&, const Triangle&);
+void outputBox(ostream&, const Box&);
+void outputCube(ostream&, const Cube&);
+void outputCylinder(ostream&, const Cylinder&);
+void outputPrism(ostream&, const Prism&);
+
+
 int main() {
 
 	//Programmer info
@@ -52,34 +92,35 @@ int main() {
 
 		//The following conditional tests for what type of object is specified, then it calculates and outputs desired values
 		if (tokens.at(0) == "SQUARE") {
+
+			Square* sq = new Square;
+
 			//Side value needed
 			tokens.resize(2, "0");
 			//Convert string to double
-			side = atof(tokens.at(1).c_str());
+			sq->side = atof(tokens.at(1).c_str());
 
 			//Calculate area and perimeter using geometric formulas
-			area = side * side;
-			perimeter = side * 4.0;
+			area = sq->side * sq->side;
+			perimeter = sq->side * 4.0;
 
-			//Output the data to the console and an output file
-			cout << tokens.at(0) << " side = " << side << ", area = " << area << ", perimeter = " << perimeter << endl;
-			fout << tokens.at(0) << " side = " << side << ", area = " << area << ", perimeter = " << perimeter << endl;
 		}
 		else if (tokens.at(0) == "RECTANGLE") {
+
+			Rectangle* rec = new Rectangle;
+
 			//Length and width values needed
 			tokens.resize(3, "0");
 			//Convert strings to doubles
-			length = atof(tokens.at(1).c_str());
-			width = atof(tokens.at(2).c_str());
+			rec->length = atof(tokens.at(1).c_str());
+			rec->width = atof(tokens.at(2).c_str());
 
 			//Calculate area and perimeter using geometric formulas
-			area = length * width;
-			perimeter = 2.0 * (length + width);
+			area = rec->length * rec->width;
+			perimeter = 2.0 * (rec->length + rec->width);
 
-			//Output the data to the console and an output file
-			cout << tokens.at(0) << " length = " << length << ", width = " << width << ", area = " << area << ", perimeter = " << perimeter << endl;
-			fout << tokens.at(0) << " length = " << length << ", width = " << width << ", area = " << area << ", perimeter = " << perimeter << endl;
 		}
+		/**************************************create objects and add pointers*************************************/
 		else if (tokens.at(0) == "TRIANGLE") {
 			//Side value needed
 			tokens.resize(2, "0");
@@ -89,10 +130,6 @@ int main() {
 			//Calculate area and perimeter using geometric formulas
 			area = sqrt(3) / 4 * side * side;
 			perimeter = length * 3.0;
-
-			//Output the data to the console and an output file
-			cout << tokens.at(0) << " side = " << side << ", area = " << area << ", perimeter = " << perimeter << endl;
-			fout << tokens.at(0) << " side = " << side << ", area = " << area << ", perimeter = " << perimeter << endl;
 		}
 		else if (tokens.at(0) == "CIRCLE") {
 			// Radius value needed
@@ -103,10 +140,6 @@ int main() {
 			//Calculate area and perimeter using geometric formulas
 			area = pi * radius * radius;
 			perimeter = 2.0 * pi * radius;
-
-			//Output the data to the console and an output file
-			cout << tokens.at(0) << " radius = " << radius << ", area = " << area << ", perimeter = " << perimeter << endl;
-			fout << tokens.at(0) << " radius = " << radius << ", area = " << area << ", perimeter = " << perimeter << endl;
 		}
 		else if (tokens.at(0) == "CUBE") {
 			//Side value needed
@@ -117,10 +150,6 @@ int main() {
 			//Calculate surface area and volume using geometric formulas
 			surfaceArea = 6.0 * side * side;
 			volume = side * side * side;
-
-			//Output the data to the console and an output file
-			cout << tokens.at(0) << " Side = " << side << ", surface area = " << surfaceArea << ", volume = " << volume << endl;
-			fout << tokens.at(0) << " Side = " << side << ", surface area = " << surfaceArea << ", volume = " << volume << endl;
 		}
 		else if (tokens.at(0) == "BOX") {
 			//Length, width, and height values needed
@@ -133,10 +162,6 @@ int main() {
 			//Calculate surface area and volume using geometric formulas
 			surfaceArea = (2.0 * length * width) + (2.0 * width * height) + (2.0 * height * length);
 			volume = length * width * height;
-
-			//Output the data to the console and an output file
-			cout << tokens.at(0) << " length = " << length << ", width = " << width << ", height = " << height << ", surface area = " << surfaceArea << ", volume = " << volume << endl;
-			fout << tokens.at(0) << " length = " << length << ", width = " << width << ", height = " << height << ", surface area = " << surfaceArea << ", volume = " << volume << endl;
 		}
 		else if (tokens.at(0) == "CYLINDER") {
 			//Radius and height values needed
@@ -148,10 +173,6 @@ int main() {
 			//Calculate surface area and volume using geometric formulas
 			surfaceArea = (2.0 * pi * radius * radius) + (2.0 * pi * radius * height);
 			volume = pi * radius * radius * height;
-
-			//Output the data to the console and an output file
-			cout << tokens.at(0) << " radius = " << radius << ", height = " << height << ", surface area = " << surfaceArea << ", volume = " << volume << endl;
-			fout << tokens.at(0) << " radius = " << radius << ", height = " << height << ", surface area = " << surfaceArea << ", volume = " << volume << endl;
 		}
 		else if (tokens.at(0) == "PRISM") {
 			//Side and height values needed
@@ -163,10 +184,6 @@ int main() {
 			//Calculate surface area and volume using geometric formulas
 			surfaceArea = (2.0 * sqrt(3) / 4.0 * side * side) + (3.0 * side * height);
 			volume = sqrt(3) / 4 * side * side * height;
-
-			//Output the data to the console and an output file
-			cout << tokens.at(0) << " side = " << side << ", height = " << height << ", surface area = " << surfaceArea << ", volume = " << volume << endl;
-			fout << tokens.at(0) << " side = " << side << ", height = " << height << ", surface area = " << surfaceArea << ", volume = " << volume << endl;
 		}
 		//Exit the file if EOF is encountered
 		else if (tokens.at(0) == "EOF") {
@@ -190,4 +207,37 @@ vector<string> parseString(string str) {
 	stringstream s(str);
 	istream_iterator<string> begin(s), end;
 	return vector<string>(begin, end);
+}
+
+void outputSquare(ostream& out, const Square& s) {
+	//Output the data to the console and an output file
+	out << "Square side = " << s.side << ", area = " << s.area << ", perimeter = " << s.perimeter << endl;
+}
+void outputRectangle(ostream& out, const Rectangle & r) {
+	//Output the data to the console and an output file
+	out << "Rectangle length = " << r.length << ", width = " << r.width << ", area = " << r.area << ", perimeter = " << r.perimeter << endl;
+}
+void outputCircle(ostream& out, const Circle& c) {
+	//Output the data to the console and an output file
+	out << "Circle radius = " << c.radius << ", area = " << c.area << ", perimeter = " << c.perimeter << endl;
+}
+void outputTriangle(ostream& out, const Triangle& t) {
+	//Output the data to the console and an output file
+	out << "Triangle side = " << t.side << ", area = " << t.area << ", perimeter = " << t.perimeter << endl;
+}
+void outputBox(ostream& out, const Box& b) {
+	//Output the data to the console and an output file
+	out << "Box length = " << b.length << ", width = " << b.width << ", height = " << b.height << ", surface area = " << b.surfaceArea << ", volume = " << b.volume << endl;
+}
+void outputCube(ostream& out, const Cube& c) {
+	//Output the data to the console and an output file
+	out << "Cube side = " << c.side << ", surface area = " << c.surfaceArea << ", volume = " << c.volume << endl;
+}
+void outputCylinder(ostream& out, const Cylinder& c) {
+	//Output the data to the console and an output file
+	out << "Cylinder radius = " << c.radius << ", height = " << c.height << ", surface area = " << c.surfaceArea << ", volume = " << c.volume << endl;
+}
+void outputPrism(ostream& out, const Prism& p) {
+	//Output the data to the console and an output file
+	out << "Prism side = " << p.side << ", height = " << p.height << ", surface area = " << p.surfaceArea << ", volume = " << p.volume << endl;
 }
