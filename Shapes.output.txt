@@ -1,3 +1,7 @@
+Programmer : Nanki Grewal
+Programmer ID: 1428278
+File: c:\users\nanki grewal\documents\visual studio 2015\projects\shapes\shapes.1.cpp
+
 Square side = 14.50, area = 210.25, perimeter = 58.00
 Square side = 0.00, area = 0.00, perimeter = 0.00
 Rectangle length = 14.50, width = 4.65, area = 67.43, perimeter = 38.30
