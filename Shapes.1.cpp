@@ -5,6 +5,7 @@
 #include<iostream>
 #include<fstream>
 #include<iomanip>
+#include<algorithm>
 using namespace std;
 
 #include<cmath>
@@ -12,43 +13,102 @@ using namespace std;
 
 const double pi = 3.14159;
 
-struct Square {
-	double side;
+class Square {
+	const double side;
+public:
+	Square(const vector<string>&);
+	Square& operator = (const Square&);
 	void output(ostream&) const;
+
+	double getSide() const { return side; };
 };
-struct Rectangle {
-	double length;
-	double width;
+
+class Rectangle {
+	const double length;
+	const double width;
+public:
+	Rectangle(const vector<string>&);
+	Rectangle& operator = (const Rectangle&);
 	void output(ostream&) const;
+	double getLength() const { return length; };
+	double getWidth() const { return width; };
 };
-struct Circle {
-	double radius;
+
+class Circle {
+	const double radius;
+public:
+	Circle(const vector<string>&);
+	Circle& operator = (const Circle&);
 	void output(ostream&) const;
+
+	double getRadius() const { return radius; };
 };
-struct Triangle {
-	double side;
+
+class Triangle {
+	const double side;
+public:
+	Triangle(const vector<string>&);
+	Triangle& operator = (const Triangle&);
 	void output(ostream&) const;
+
+	double getSide() const { return side; };
 };
-struct Cube {
-	double side;
+
+class Cube {
+	const double side;
+public:
+	Cube(const vector<string>&);
+	Cube& operator = (const Cube&);
 	void output(ostream&) const;
+
+	double getSide() const { return side; };
 };
-struct Box {
-	double length;
-	double width;
-	double height;
+
+class Box {
+	const double length;
+	const double width;
+	const double height;
+public:
+	Box(const vector<string>&);
+	Box& operator = (const Box&);
 	void output(ostream&) const;
+
+	double getLength() const { return length; };
+	double getWidth() const { return width; };
+	double getHeight() const { return height; };
 };
-struct Cylinder {
-	double radius;
-	double height;
+
+class Cylinder {
+	const double radius;
+	const double height;
+public:
+	Cylinder(const vector<string>&);
+	Cylinder& operator = (const Cylinder&);
 	void output(ostream&) const;
+	double getRadius() const { return radius; };
+	double getHeight() const { return height; };
 };
-struct Prism {
-	double side;
-	double height;
+
+class Prism {
+	const double side;
+	const double height;
+public:
+	Prism(const vector<string>&);
+	Prism& operator = (const Prism&);
 	void output(ostream&) const;
+	double getSide() const { return side; };
+	double getHeight() const { return height; };
 };
+
+Square::Square(const vector<string>& tokens) : side((tokens.size() > 2) ? atof(tokens[1].c_str()) : 0) {}
+Rectangle::Rectangle(const vector<string>& tokens) : length((tokens.size() > 2) ? atof(tokens[1].c_str()) : 0), width((tokens.size() > 3) ? atof(tokens[2].c_str()) : 0) {}
+Circle::Circle(const vector<string>& tokens) : radius((tokens.size() > 2) ? atof(tokens[1].c_str()) : 0) {}
+Triangle::Triangle(const vector<string>& tokens) : side((tokens.size() > 2) ? atof(tokens[1].c_str()) : 0) {}
+Box::Box(const vector<string>& tokens) : length((tokens.size() > 2) ? atof(tokens[1].c_str()) : 0), width((tokens.size() > 3) ? atof(tokens[2].c_str()) : 0), height((tokens.size() > 4) ? atof(tokens[3].c_str()) : 0) {}
+Cube::Cube(const vector<string>& tokens) : side((tokens.size() > 2) ? atof(tokens[1].c_str()) : 0) {}
+Cylinder::Cylinder(const vector<string>& tokens) : radius((tokens.size() > 2) ? atof(tokens[1].c_str()) : 0), height((tokens.size() > 3) ? atof(tokens[2].c_str()) : 0) {}
+Prism::Prism(const vector<string>& tokens) : side((tokens.size() > 2) ? atof(tokens[1].c_str()) : 0), height((tokens.size() > 3) ? atof(tokens[2].c_str()) : 0) {}
+
 //Prototype for string parsing function
 vector<string> parseString(string);
 //Prototypes for shapes property calc functions
@@ -84,7 +144,7 @@ int main() {
 	if (!fin.good()) throw "I/O error";
 
 	//Create an empty bag and its companion array
-	vector<void*> myBag; 
+	vector<const void*> myBag;
 	vector<char> myBagType;
 	
 	//While loop for parsing through the open file
@@ -101,66 +161,57 @@ int main() {
 
 		//The following conditional tests for what type of object is specified, then it calculates and outputs desired values
 		if (tokens.at(0) == "SQUARE") {
-			Square* sq = new Square;
-			//Side value needed
-			sq->side = (tokens.size() > 1 ? atof(tokens.at(1).c_str()) : 0);
+			const Square* const sq = new Square(tokens);
+			double side = sq->getSide();
 			//Convert string to double
 			myBag.push_back(sq);
 			myBagType.push_back('S');
 		}
 		else if (tokens.at(0) == "RECTANGLE") {
-			Rectangle* rec = new Rectangle;
-			//Convert strings to doubles
-			rec->length = (tokens.size() > 1 ? atof(tokens.at(1).c_str()) : 0);
-			rec->width = (tokens.size() > 2 ? atof(tokens.at(2).c_str()) : 0);
+			const Rectangle* const rec = new Rectangle(tokens);
+			double length = rec->getLength();
+			double width = rec->getWidth();
 			myBag.push_back(rec);
 			myBagType.push_back('R');
 		}
 		else if (tokens.at(0) == "TRIANGLE") {
-			Triangle* tri = new Triangle;
+			const Triangle* const tri = new Triangle(tokens);
+			double side = tri->getSide();
 			//Convert string to double
-			tri->side = (tokens.size() > 1 ? atof(tokens.at(1).c_str()) : 0);
 			myBag.push_back(tri);
 			myBagType.push_back('T');
 		}
 		else if (tokens.at(0) == "CIRCLE") {
-			Circle* cir = new Circle;
-			//Convert string to double
-			cir->radius = (tokens.size() > 1 ? atof(tokens.at(1).c_str()) : 0);
+			const Circle* const cir = new Circle(tokens);
+			double radius = cir->getRadius();
 			myBag.push_back(cir);
 			myBagType.push_back('C');
 		}
 		else if (tokens.at(0) == "CUBE") {
-			Cube* cube = new Cube;
-			//Convert string to double
-			cube->side = (tokens.size() > 1 ? atof(tokens.at(1).c_str()) : 0);
+			const Cube* const cube = new Cube(tokens);
+			double side = cube->getSide();
 			myBag.push_back(cube);
 			myBagType.push_back('U');
 		}
 		else if (tokens.at(0) == "BOX") {
-			Box* box = new Box;
-			//Convert strings to doubles
-			box->length = (tokens.size() > 1 ? atof(tokens.at(1).c_str()) : 0);
-			box->width = (tokens.size() > 2 ? atof(tokens.at(2).c_str()) : 0);
-			box->height = (tokens.size() > 3 ? atof(tokens.at(3).c_str()) : 0);
+			const Box* const box = new Box(tokens);
+			double length = box->getLength();
+			double height = box->getHeight();
+			double width = box->getWidth();
 			myBag.push_back(box);
 			myBagType.push_back('B');
 		}
 		else if (tokens.at(0) == "CYLINDER") {
-			Cylinder* cyl = new Cylinder;
-			//Convert strings to doubles
-			cyl->height = (tokens.size() > 1 ? atof(tokens.at(1).c_str()) : 0);
-			cyl->radius = (tokens.size() > 2 ? atof(tokens.at(2).c_str()) : 0);
+			const Cylinder* const cyl = new Cylinder(tokens);
+			double height = cyl->getHeight();
+			double radius = cyl->getRadius();
 			myBag.push_back(cyl);
 			myBagType.push_back('Y');
 		}
 		else if (tokens.at(0) == "PRISM") {
-			Prism* pri = new Prism;
-			//Side and height values needed
-			tokens.resize(3, "0");
-			//Convert strings to doubles
-			pri->side = (tokens.size() > 1 ? atof(tokens.at(1).c_str()) : 0);
-			pri->height = (tokens.size() > 2 ? atof(tokens.at(2).c_str()) : 0);
+			const Prism* const pri = new Prism(tokens);
+			double side = pri->getSide();
+			double height = pri->getHeight();
 			myBag.push_back(pri);
 			myBagType.push_back('P');
 		}
@@ -173,54 +224,63 @@ int main() {
 			cout << tokens.at(0) << " -> invalid" << endl;
 	}
 
+	for (int i = 0; i < myBag.size(); i++) {
+		for (int j = i + 1; j < myBag.size(); j++) {
+			if (myBagType[j] < myBagType[i]) {
+				swap(myBagType[i], myBagType[j]);
+				swap(myBag[i], myBag[j]);
+			}
+		}
+	}
+
 	//This loop outputs appropriate calculations to console and to output file 
 	for (unsigned int i = 0; i < myBag.size(); i++)
 	{
 		if (myBagType[i] == 'S') {
-			Square* pSquare = reinterpret_cast<Square*>(myBag[i]);
-			Square& rSquare = *pSquare;
+			const Square* const pSquare = reinterpret_cast<const Square*>(myBag[i]);
+			const Square& rSquare = *pSquare;
 			rSquare.output(cout);
 			rSquare.output(fout);
 		}
 		else if (myBagType[i] == 'R') {
-			Rectangle* pRectangle = reinterpret_cast<Rectangle*>(myBag[i]);
-			Rectangle& rRectangle = *pRectangle;
+			const Rectangle* const pRectangle = reinterpret_cast<const Rectangle*>(myBag[i]);
+			const Rectangle& rRectangle = *pRectangle;
 			rRectangle.output(cout);
 			rRectangle.output(fout);
 		}
 		else if (myBagType[i] == 'T') {
-			Triangle* pTriangle = reinterpret_cast<Triangle*>(myBag[i]); 
-			Triangle& rTriangle = *pTriangle;
+			const Triangle* const pTriangle = reinterpret_cast<const Triangle*>(myBag[i]); 
+			const Triangle& rTriangle = *pTriangle;
 			rTriangle.output(cout);
 			rTriangle.output(fout);
 		}
 		else if (myBagType[i] == 'C') {
-			Circle* pCircle = reinterpret_cast<Circle*>(myBag[i]);
-			Circle& rCircle = *pCircle;
+			const Circle* const pCircle = reinterpret_cast<const Circle*>(myBag[i]);
+			const Circle& rCircle = *pCircle;
 			rCircle.output(cout);
 			rCircle.output(fout);
 		}
 		else if (myBagType[i] == 'U') {
-			Cube* pCube = reinterpret_cast<Cube*>(myBag[i]); 
-			Cube& rCube = *pCube;
+			const Cube* const pCube = reinterpret_cast<const Cube*>(myBag[i]); 
+			const Cube& rCube = *pCube;
 			rCube.output(cout);
 			rCube.output(fout);
 		}
 		else if (myBagType[i] == 'B') {
-			Box* pBox = reinterpret_cast<Box*>(myBag[i]); 
-			Box& rBox = *pBox;
+			const Box* const pBox = reinterpret_cast<const Box*>(myBag[i]); 
+			const Box& rBox = *pBox;
 			rBox.output(cout);
 			rBox.output(fout);
 		}
 		else if (myBagType[i] == 'Y') {
-			Cylinder* pCylinder = reinterpret_cast<Cylinder*>(myBag[i]);
-			Cylinder& rCylinder = *pCylinder;
+			const Cylinder* const pCylinder = reinterpret_cast<const Cylinder*>(myBag[i]);
+			const Cylinder& rCylinder = *pCylinder;
 			rCylinder.output(cout);
 			rCylinder.output(fout);
 		}
 		else if (myBagType[i] == 'P') {
-			Prism* pPrism = reinterpret_cast<Prism*>(myBag[i]);
-			Prism& rPrism = *pPrism;
+			const Prism* const pPrism = reinterpret_cast<const Prism*>(myBag[i]);
+			const Prism& rPrism = *pPrism;
 			rPrism.output(cout);
 			rPrism.output(fout);
 		}
@@ -238,35 +298,35 @@ int main() {
 	for (unsigned int i = 0; i < myBag.size(); i++)
 	{
 		if (myBagType[i] == 'S') {
-			Square* s = reinterpret_cast<Square*>(myBag[i]); // restore its "Movie-ness"
+			const Square* const s = reinterpret_cast<const Square*>(myBag[i]); // restore its "Movie-ness"
 			delete s; // deallocate the Movie object at memory location myBag[i]
 		}
 		else if (myBagType[i] == 'R') {
-			Rectangle* r = reinterpret_cast<Rectangle*>(myBag[i]); // restore its "Movie-ness"
+			const Rectangle* const r = reinterpret_cast<const Rectangle*>(myBag[i]); // restore its "Movie-ness"
 			delete r;
 		}
 		else if (myBagType[i] == 'T') {
-			Triangle* t = reinterpret_cast<Triangle*>(myBag[i]); // restore its "Movie-ness"
+			const Triangle* const t = reinterpret_cast<const Triangle*>(myBag[i]); // restore its "Movie-ness"
 			delete t;
 		}
 		else if (myBagType[i] == 'C') {
-			Circle* e = reinterpret_cast<Circle*>(myBag[i]); // restore its "Movie-ness"
+			const Circle* const e = reinterpret_cast<const Circle*>(myBag[i]); // restore its "Movie-ness"
 			delete e;
 		}
 		else if (myBagType[i] == 'U') {
-			Cube* c = reinterpret_cast<Cube*>(myBag[i]); // restore its "Movie-ness"
+			const Cube* const c = reinterpret_cast<const Cube*>(myBag[i]); // restore its "Movie-ness"
 			delete c;
 		}
 		else if (myBagType[i] == 'B') {
-			Box* b = reinterpret_cast<Box*>(myBag[i]); // restore its "Movie-ness"
+			const Box* const b = reinterpret_cast<const Box*>(myBag[i]); // restore its "Movie-ness"
 			delete b;
 		}
 		else if (myBagType[i] == 'Y') {
-			Cylinder* y = reinterpret_cast<Cylinder*>(myBag[i]); // restore its "Movie-ness"
+			const Cylinder* const y = reinterpret_cast<const Cylinder*>(myBag[i]); // restore its "Movie-ness"
 			delete y;
 		}
 		else if (myBagType[i] == 'P') {
-			Prism* p = reinterpret_cast<Prism*>(myBag[i]); // restore its "Movie-ness"
+			const Prism* const p = reinterpret_cast<const Prism*>(myBag[i]); // restore its "Movie-ness"
 			delete p;
 		}
 	}

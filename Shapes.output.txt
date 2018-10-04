@@ -2,15 +2,15 @@ Programmer : Nanki Grewal
 Programmer ID: 1428278
 File: c:\users\nanki grewal\documents\visual studio 2015\projects\shapes\shapes.1.cpp
 
-Square side = 14.50, area = 210.25, perimeter = 58.00
+Box length = 0.00, width = 2.00, height = 0.00, surface area = 0.00, volume = 0.00
+Box length = 1.00, width = 2.00, height = 0.00, surface area = 4.00, volume = 0.00
+Circle radius = 0.00, area = 0.00, perimeter = 0.00
+Prism side = 2.20, height = 0.00, surface area = 4.19, volume = 0.00
+Rectangle length = 14.50, width = 0.00, area = 0.00, perimeter = 29.00
 Square side = 0.00, area = 0.00, perimeter = 0.00
-Rectangle length = 14.50, width = 4.65, area = 67.43, perimeter = 38.30
-Circle radius = 14.50, area = 660.52, perimeter = 91.11
-Box length = 0.00, width = 2.00, height = 9.00, surface area = 36.00, volume = 0.00
-Cube side = 13.00, surface area = 1014.00, volume = 2197.00
-Box length = 1.00, width = 2.00, height = 3.00, surface area = 22.00, volume = 6.00
-Cylinder radius = 4.00, height = 2.30, surface area = 158.34, volume = 115.61
-Cylinder radius = 0.00, height = 1.23, surface area = 0.00, volume = 0.00
-Cylinder radius = 1.23, height = 50.00, surface area = 395.92, volume = 237.65
+Square side = 14.50, area = 210.25, perimeter = 58.00
 Triangle side = 1.20, area = 0.62, perimeter = 3.60
-Prism side = 2.20, height = 5.00, surface area = 37.19, volume = 10.48
+Cube side = 0.00, surface area = 0.00, volume = 0.00
+Cylinder radius = 50.00, height = 0.00, surface area = 15707.95, volume = 0.00
+Cylinder radius = 2.30, height = 4.00, surface area = 91.04, volume = 66.48
+Cylinder radius = 0.00, height = 0.00, surface area = 0.00, volume = 0.00
