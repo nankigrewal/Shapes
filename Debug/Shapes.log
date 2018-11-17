@@ -1,5 +1,3 @@
 ﻿  Shapes.1.cpp
-c:\users\nanki grewal\documents\visual studio 2015\projects\shapes\shapes.1.cpp(227): warning C4018: '<': signed/unsigned mismatch
-c:\users\nanki grewal\documents\visual studio 2015\projects\shapes\shapes.1.cpp(228): warning C4018: '<': signed/unsigned mismatch
   Shapes.vcxproj -> C:\Users\Nanki Grewal\Documents\Visual Studio 2015\Projects\Shapes\Debug\Shapes.exe
   Shapes.vcxproj -> C:\Users\Nanki Grewal\Documents\Visual Studio 2015\Projects\Shapes\Debug\Shapes.pdb (Partial PDB)
